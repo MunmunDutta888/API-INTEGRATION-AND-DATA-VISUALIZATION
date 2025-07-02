@@ -5,14 +5,14 @@ import matplotlib.pyplot as plt
 url = "https://api.coingecko.com/api/v3/coins/bitcoin/market_chart"
 params = {
     "vs_currency": "usd",
-    "days": "7",  # Last 7 days
+    "days": "7",  
     "interval": "daily"
 }
 
 response = requests.get(url, params=params)
 data = response.json()
 
-prices = data['prices']  # List of [timestamp, price]
+prices = data['prices'] 
 
 df = pd.DataFrame(prices, columns=["Timestamp", "Price"])
 df['Date'] = pd.to_datetime(df['Timestamp'], unit='ms')
